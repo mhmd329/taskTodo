@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* مثال على الأنماط في الوضع المظلم */
+.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.dark .bg-white {
+  background-color: #333;
+}
+
+.dark .bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.dark .bg-red-500 {
+  background-color: #ef4444;
+}
+
+/* تنسيق الـ input */
+input {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark input {
+  background-color: #333;
+  color: #ddd;
+  border: 1px solid #555;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3b82f6; /* اللون الأزرق */
+}
+
+.dark input:focus {
+  border-color: #1e3a8a; /* الأزرق الداكن عند التركيز في الوضع الداكن */
+}
+
+/* تنسيق النصوص بشكل عام */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

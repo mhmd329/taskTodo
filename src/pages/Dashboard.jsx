@@ -72,8 +72,7 @@ const Dashboard = () => {
     setShowModal(true);
   };
 
-  const closeModal = () => setShowModal(false);
-
+ 
   return (
     <div className={darkMode ? "dark" : ""}>
       <button onClick={sortTasksByDueDate} className="p-2 bg-blue-500 text-white rounded">
@@ -102,19 +101,7 @@ const Dashboard = () => {
         onToggleComplete={handleToggleComplete}
         onTaskClick={handleTaskClick} // إضافة onTaskClick
       />
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded shadow-lg w-1/2">
-            <h3 className="text-xl font-bold">{selectedTask?.title}</h3>
-            <p>{selectedTask?.description}</p>
-            <p>Due Date: {selectedTask?.dueDate}</p>
-            <p>Status: {selectedTask?.completed ? "Completed" : "Pending"}</p>
-            <button onClick={closeModal} className="p-2 bg-red-500 text-white rounded">
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+     
      
     </div>
   );

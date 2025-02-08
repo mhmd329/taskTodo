@@ -1,23 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { TaskContext } from "../context/cardContext";
 import { v4 as uuidv4 } from "uuid"; // إذا أردت استخدام UUID لتوليد id فريد
 
-const TaskForm = ({ onAddTask, task, onSave }) => {
+const TaskForm = () => {
+  const { handleAddTask, handleSave ,editingTask} = useContext(TaskContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
-    if (task) {
+    if (editingTask) {
       // تحديث الحقول عند تعديل المهمة
-      setTitle(task.title);
-      setDescription(task.description);
-      setDueDate(task.dueDate);
+      setTitle(editingTask.title);
+      setDescription(editingTask.description);
+      setDueDate(editingTask.dueDate);
     }
-  }, [task]); // التحديث عند تغيير المهمة
+  }, [editingTask]); // التحديث عند تغيير المهمة
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!title.trim()) {
       alert("Please enter a task title.");
       return;
@@ -26,11 +28,11 @@ const TaskForm = ({ onAddTask, task, onSave }) => {
       alert("Due date must be in the future.");
       return;
     }
-  
-    if (task) {
+
+    if (editingTask) {
       // تعديل مهمة موجودة
-      const updatedTask = { ...task, title, description, dueDate };
-      onSave(updatedTask);
+      const updatedTask = { ...editingTask, title, description, dueDate };
+      handleSave(updatedTask);
     } else {
       // إضافة مهمة جديدة
       const newTask = {
@@ -40,9 +42,9 @@ const TaskForm = ({ onAddTask, task, onSave }) => {
         dueDate,
         completed: false,
       };
-      onAddTask(newTask);
+      handleAddTask(newTask);
     }
-  
+
     // إعادة تعيين المدخلات
     setTitle("");
     setDescription("");
@@ -74,7 +76,7 @@ const TaskForm = ({ onAddTask, task, onSave }) => {
         required
       />
       <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-        {task ? "Save Changes" : "Add Task"}
+        {editingTask ? "Save Changes" : "Add Task"}
       </button>
     </form>
   );

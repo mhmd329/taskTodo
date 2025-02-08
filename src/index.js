@@ -1,11 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';  // تأكد من أن هذا موجود
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import TaskProvider from "./context/cardContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <TaskProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </TaskProvider>,
+  document.getElementById("root")
 );

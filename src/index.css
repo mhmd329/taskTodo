@@ -21,7 +21,7 @@
 }
 
 /* تنسيق الـ input */
-input {
+input{
   background-color: #fff;
   color: #333;
   border: 1px solid #ccc;
@@ -29,7 +29,7 @@ input {
   border-radius: 0.25rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+   
 .dark input {
   background-color: #333;
   color: #ddd;
